@@ -15,3 +15,4 @@ Console.Write("ОТВЕТ: \n");
 for (int i = 2; i <= numb; i += 2)
     if (i % 2 == 0)
         Console.WriteLine(i);
+        
