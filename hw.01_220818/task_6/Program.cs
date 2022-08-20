@@ -9,11 +9,12 @@ Console.WriteLine("");
 
 Console.Write("Пожалуйста, введите целое число: ");
 int numb = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("");
 
 Console.Write("ОТВЕТ: ");
 if (numb % 2 == 0)
 {
-    Console.WriteLine("Да, число " + numb + " является чётным.");
+    Console.WriteLine("Да, число " + numb + " является чётным.\n\n");
 }
 else
 {
