@@ -10,10 +10,9 @@ Console.WriteLine("");
 int random_digit = new Random().Next(1, 65536); //65536
 Console.WriteLine("Случайно сгенерированное число: " + random_digit);
 
+int result = 0;
+
 Console.Write("ОТВЕТ: ");
-
-// int result = 0;
-
 if (random_digit <= 99)
 {
     Console.WriteLine("У числа " + random_digit + " третьей цифры нет.");
@@ -21,19 +20,16 @@ if (random_digit <= 99)
 else
 {
     if ((random_digit >= 100) && (random_digit <= 999))
-        {
-            int result = random_digit - ((random_digit / 10) * 10);
-            Console.WriteLine("У числа " + random_digit + " третья цифра является " + result + ".\n\n");
-        }
+    {
+        result = random_digit / 10;
+    }
     else if ((random_digit >= 1000) && (random_digit <= 9999))
-        {
-            int result = (random_digit - ((random_digit / 100) * 100)) / 10;
-            Console.WriteLine("У числа " + random_digit + " третья цифра является " + result + ".\n\n");
-        }
+    {
+        result = (random_digit / 10) % 10;
+    }
     else if ((random_digit >= 10000) && (random_digit <= 99999))
-        {
-            int result = (random_digit - ((random_digit / 1000) * 1000)) / 100;
-            Console.WriteLine("У числа " + random_digit + " третья цифра является " + result + ".\n\n");
-        }
-    // Console.WriteLine("У числа " + random_digit + " третья цифра является " + result + ".\n\n");
+    {
+        result = (random_digit / 100) % 10;
+    }
+    Console.WriteLine("У числа " + random_digit + " третья цифра является " + result + ".\n\n");
 }
