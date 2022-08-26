@@ -10,15 +10,12 @@ Console.WriteLine("");
 
 Console.Write("Пожалуйста, введите целое число: ");
 int N = Convert.ToInt32(Console.ReadLine());
-// int N = 3;
-// Console.Write("ОТВЕТ: ");
 
 int[] array = new int[N];
 
 int index = 0;
 int num = 1;
 
+// Решение методом цикла for 
 for (Console.Write("ОТВЕТ: "); index < N; Console.Write(array[index] + " "), index++, num++)
     array[index] = (int)Math.Pow(num, 3);
-// Console.Write(array[index] + " ");
-// num++;
