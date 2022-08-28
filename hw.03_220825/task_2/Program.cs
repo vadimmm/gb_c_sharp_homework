@@ -9,24 +9,43 @@ Console.WriteLine("\n" + task_name + "\n");
 Console.WriteLine(separator);
 Console.WriteLine("");
 
-Console.Write("Пожалуйста, введите координаты 'X' точки A: ");
-double xA = Convert.ToDouble(Console.ReadLine());
-Console.Write("Пожалуйста, введите координаты 'Y' точки A: ");
-double yA = Convert.ToDouble(Console.ReadLine());
-Console.Write("Пожалуйста, введите координаты 'Z' точки A: ");
-double zA = Convert.ToDouble(Console.ReadLine());
-Console.WriteLine($"Координаты точки A: X;Y;Z = {xA};{yA};{zA}");
+void setDotName(string name)
+{
+    Console.BackgroundColor = ConsoleColor.DarkRed;
+    Console.Write(" " + name + " ");
+    Console.ResetColor();
+}
+
+
 // 🅰
+Console.Write("Пожалуйста, введите координаты точки ");
+setDotName("A");
+Console.Write("\n- координаты 'X': ");
+double xA = Convert.ToDouble(Console.ReadLine());
+Console.Write("- координаты 'Y': ");
+double yA = Convert.ToDouble(Console.ReadLine());
+Console.Write("- координаты 'Z': ");
+double zA = Convert.ToDouble(Console.ReadLine());
+Console.Write($"Вы ввели слудеющие координаты точки ");
+setDotName("A");
+Console.Write($": X;Y;Z = {xA};{yA};{zA}\n\n");
 
-Console.Write("Пожалуйста, введите координаты 'X' точки B: ");
-double xB = Convert.ToDouble(Console.ReadLine());
-Console.Write("Пожалуйста, введите координаты 'Y' точки B: ");
-double yB = Convert.ToDouble(Console.ReadLine());
-Console.Write("Пожалуйста, введите координаты 'Z' точки B: ");
-double zB = Convert.ToDouble(Console.ReadLine());
-Console.WriteLine($"Координаты точки B: X;Y;Z = {xB};{yB};{zB}");
 // 🅱
+Console.Write("Теперь, введите координаты точки ");
+setDotName("B");
+Console.Write("\n- координаты 'X': ");
+double xB = Convert.ToDouble(Console.ReadLine());
+Console.Write("- координаты 'Y': ");
+double yB = Convert.ToDouble(Console.ReadLine());
+Console.Write("- координаты 'Z': ");
+double zB = Convert.ToDouble(Console.ReadLine());
+Console.Write($"Вы ввели слудеющие координаты точки ");
+setDotName("B");
+Console.Write($": X;Y;Z = {xB};{yB};{zB}\n\n");
 
-double result = Math.Cbrt(Math.Exp(xB-xA) + Math.Exp(yB - yA) + Math.Exp(zB - zA));
-Console.WriteLine($"ОТВЕТ: Расстояние между точками: {result}");
 // 🆎
+double result = Math.Cbrt(Math.Exp(xB-xA) + Math.Exp(yB - yA) + Math.Exp(zB - zA));
+
+Console.Write("ОТВЕТ: Расстояние между точками ");
+setDotName("AB");
+Console.Write($" составляет {result} единиц измерения.\n\n");
