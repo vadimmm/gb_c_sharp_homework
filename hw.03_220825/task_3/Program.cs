@@ -10,12 +10,15 @@ Console.WriteLine("");
 
 Console.Write("Пожалуйста, введите целое число: ");
 int N = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите значение степени");
+// int exponent_numb = Convert.ToInt32(Console.ReadLine());
+int exponent_numb = 3;
 
 int[] array = new int[N];
 
 int index = 0;
 int num = 1;
 
-// Решение методом цикла for 
+// Решение методом цикла for v1
 for (Console.Write("ОТВЕТ: "); index < N; Console.Write(array[index] + " "), index++, num++)
-    array[index] = (int)Math.Pow(num, 3);
+    array[index] = (int)Math.Pow(num, exponent_numb);
