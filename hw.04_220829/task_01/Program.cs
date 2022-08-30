@@ -21,7 +21,6 @@ int number_A_tmp = number_A;
 for (int i = 1; i < number_B; i++)
 {
     number_A = number_A_tmp * number_A;
-    // Console.WriteLine(number_A);    
 }
 
 Console.Write($"ОТВЕТ: {number_A}");
