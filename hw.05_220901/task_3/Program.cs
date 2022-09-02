@@ -28,7 +28,6 @@ for (int i = 0; i < N; i++)
     numbers[i] = rnd.Next(numbStart, numbStop);
 }
 
-
 int MinMaxArrayNumbers(string value)
 {
     int numb = numbers[0];
@@ -63,4 +62,4 @@ numbMin = MinMaxArrayNumbers("min");
 numbMax = MinMaxArrayNumbers("max");
 
 int result = numbMax - numbMin;
-Console.WriteLine($"ОТВЕТ: Разница между максимальным {numbMax} и минимальным {numbMin} значение массива сосставляет {result}.");
+Console.WriteLine($"ОТВЕТ: Разница между максимальным {numbMax} и минимальным {numbMin} элементом массива сосставляет {result}.");
