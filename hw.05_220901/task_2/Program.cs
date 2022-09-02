@@ -25,14 +25,12 @@ Random rnd = new Random();
 for (int i = 0; i < N; i++)
 {
     numbers[i] = rnd.Next(numbStart, numbStop);
-    Console.WriteLine($"Числа сгенерированыне для масиива {numbers[i]}");
 }
 
 for (int i = 1; i < N; i += 2)
 {
     if (numbers[i] % 2 == 0)
     {
-        Console.WriteLine($"Числа для суммирвоания {numbers[i]}");
         sum += numbers[i];
     }
 }
