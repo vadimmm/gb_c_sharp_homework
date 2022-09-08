@@ -15,29 +15,33 @@ Console.WriteLine("");
 
 string [] lineCoordinates = new string[4];
 
-Console.Write("Введите, через пробел, координаты точек b1, k1, b2, k2: ");
+Console.Write("Введите, через пробел, координаты для точек b1, k1, b2, k2: ");
 lineCoordinates  = Console.ReadLine().Split(' ');
 double b1 = double.Parse(lineCoordinates[0]);
 double k1 = double.Parse(lineCoordinates[1]);
 double b2 = double.Parse(lineCoordinates[2]);
 double k2 = double.Parse(lineCoordinates[3]);
-Console.WriteLine($"Вы передали координаты точек для:\n b1: {b1}\n k1: {k1}\n b2: {b2}\n k2: {k2} ");
-Console.WriteLine("\n\n");
+Console.WriteLine($"Вы передали координаты точек для:\n - b1: {b1}\n - k1: {k1}\n - b2: {b2}\n - k2: {k2}");
+
 double x = ((b2 - b1) / (k1 - k2));
-// Console.WriteLine("x = " + x);
 
 double y = (k1 * x) + b1;
-// Console.WriteLine("y = " + y);
 
+Console.Write("\n\nОТВЕТ: ");
 if ((b1 * k2 - b2 * k1) == 0)
 {
-    Console.WriteLine("Паралельно");
+    Console.WriteLine("Прямые расположены паралельно");
 }
 else if ((b1 * b2 + k1 * k2) == 0)
 {
-    Console.WriteLine("Перпендикулярны");
+    Console.WriteLine("Прямые расположены перпендикулярно");
+}
+else if ((b1 == k1) && (b2 == k2) || (b1 == k2) && (b2 == k1))
+{
+    Console.WriteLine("Прямые расположены на одинаковых координатах");
 }
 else
 {
-    Console.WriteLine($"Координаты пересечения x = {x}; y = {y}");
+    Console.WriteLine($"Координаты пересечения двух прямых: x = {x}; y = {y}");
 }
+Console.WriteLine("\n\n");
