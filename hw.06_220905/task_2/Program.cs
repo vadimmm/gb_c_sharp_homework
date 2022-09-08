@@ -11,19 +11,23 @@ Console.WriteLine("\n" + task_name + "\n");
 Console.WriteLine(separator);
 Console.WriteLine("");
 
-int b1 = 2, k1 = 5, b2 = 4, k2 = 9;
+// int b1 = 2, k1 = 5, b2 = 4, k2 = 9;
 
-// int [] lineCoordinates = new int[4];
+string [] lineCoordinates = new string[4];
 
-// string [] lineCoordinates = Console.ReadLine().Split(' ').Select(Convert.ToInt32).ToArray();
-
-
-
+Console.Write("Введите, через пробел, координаты точек b1, k1, b2, k2: ");
+lineCoordinates  = Console.ReadLine().Split(' ');
+double b1 = double.Parse(lineCoordinates[0]);
+double k1 = double.Parse(lineCoordinates[1]);
+double b2 = double.Parse(lineCoordinates[2]);
+double k2 = double.Parse(lineCoordinates[3]);
+Console.WriteLine($"Вы передали координаты точек для:\n b1: {b1}\n k1: {k1}\n b2: {b2}\n k2: {k2} ");
+Console.WriteLine("\n\n");
 double x = ((b2 - b1) / (k1 - k2));
-Console.WriteLine("x = " + x);
+// Console.WriteLine("x = " + x);
 
 double y = (k1 * x) + b1;
-Console.WriteLine("y = " + y);
+// Console.WriteLine("y = " + y);
 
 if ((b1 * k2 - b2 * k1) == 0)
 {
