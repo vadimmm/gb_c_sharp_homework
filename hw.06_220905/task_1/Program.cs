@@ -11,7 +11,7 @@ Console.WriteLine("\n" + task_name + "\n");
 Console.WriteLine(separator);
 Console.WriteLine("");
 
-int numberRndStart = 0;
+int numberRndStart = 1;
 int numberRndStop = 10;
 int numberSum = 0;
 
@@ -30,4 +30,17 @@ for(int i = 0; i < number; i++)
     }
 }
 
-Console.WriteLine($"Количество положительных чисел составляет {numberSum}.");
+Console.Write("\n\nОТВЕТ: ");
+if (numberSum == 0)
+{
+    Console.WriteLine($"Введено {numberSum} положительных чисел. :(");    
+}
+else if (numberSum == 1)
+{
+    Console.WriteLine($"Введено одно положительное число: {numberSum}.");
+}
+else
+{
+    Console.WriteLine($"Количество положительных чисел составляет {numberSum}.");
+}
+Console.Write("\n\n");
