@@ -17,14 +17,13 @@ int M = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите число столбцов массива: ");
 int N = Convert.ToInt32(Console.ReadLine());
 
-// int strsCount = 3;
-// int columsCount = 4;
+// int M = 5;
+// int N = 4;
 
-int Mk = M;
-if (M > N) Mk = N - M;
-Console.WriteLine($"Случайынй интервал M={M}, N={N}. N больше Mk={Mk} на {N - Mk}");
+// коэфицент для получения случайных десятичных
+double k = 10.0;
+
 double[,] numbers = new double[M, N];
-
 
 // заполнение массива случайными числами
 Random rnd = new Random();
@@ -32,7 +31,6 @@ for (int i = 0; i < numbers.GetLength(0); i++)
 {
     for (int j = 0; j < numbers.GetLength(1); j++)
     {
-        double k = rnd.Next(Mk, N);
         numbers[i, j] = rnd.Next(-100, 100) / k;
     }
 }
