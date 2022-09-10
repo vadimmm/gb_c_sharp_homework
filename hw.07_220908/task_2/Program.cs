@@ -15,6 +15,29 @@ Console.WriteLine(separator);
 Console.WriteLine("");
 
 
+void writeMessageGreen(string name)
+{
+    Console.BackgroundColor = ConsoleColor.DarkGreen;
+    Console.WriteLine(" " + name + " ");
+    Console.ResetColor();
+}
+
+void writeMessageYellow(string name)
+{
+    Console.BackgroundColor = ConsoleColor.DarkYellow;
+    Console.WriteLine(" " + name + " ");
+    Console.ResetColor();
+}
+
+void writeMessageRed(string name)
+{
+    Console.BackgroundColor = ConsoleColor.DarkRed;
+    Console.WriteLine(" " + name + " ");
+    Console.ResetColor();
+}
+
+
+
 string [] VolumeArray = new string[2];
 Console.Write("Введите, через пробел, размер двумерного массива (строки и столбцы): ");
 VolumeArray  = Console.ReadLine().Split(' ');
@@ -54,7 +77,7 @@ printArray();
 
 int gameStart()
 {
-    Console.WriteLine($"Проверим вашу удачу? Введите целое число от {rndNumbStart} и {rndNumbStop}");
+    Console.Write($"Проверим вашу удачу? Условие: целое число от {rndNumbStart} и {rndNumbStop}.\nВаше чило?: ");
     int userInput = Convert.ToInt32(Console.ReadLine());
     int userWins = 0;
         for (int i = 0; i < numbers.GetLength(0); i++)
@@ -69,7 +92,7 @@ int gameStart()
             // Console.WriteLine("");
         }
     // Console.WriteLine("Количество совпадений: " + userWins);
-    return userWins;
+    return userWins; // userInput;
 }
 
 void gameResult()
@@ -77,14 +100,18 @@ void gameResult()
     int win = gameStart();
     if (win > 0)
     {
-        Console.Write(@"Ваше число найдено! Поздравляем!
-Вы выиграли приз, отправьте sms на номер 'abcd' и с вами обязательно свяжется наш менеджер по выигрышам!");
+        writeMessageGreen("Ваше число найдено! Поздравляем!");
+        writeMessageYellow("Вы выиграли приз, отправьте sms на номер 'abcd' и с вами обязательно свяжется наш менеджер по выигрышам!");
+        // Console.Write("Вы выиграли приз, отправьте sms на номер 'abcd' и с вами обязательно свяжется наш менеджер по выигрышам!");
+        // Console.Write(@"Ваше число найдено! Поздравляем!
+        // Вы выиграли приз, отправьте sms на номер 'abcd' и с вами обязательно свяжется наш менеджер по выигрышам!");
         // Console.Write($"Ваше число {userInput} найдено! Поздравляем! Вы выиграли приз, отправьте смс на номер 'abcd'");
         // return; 
     }
     else
     {
-        Console.WriteLine(@"Такого числа нет в массиве! Нам оооочень жаль!");
+        writeMessageRed("Такого числа нет в массиве!Нам оооочень жаль!");
+        // Console.WriteLine(@"Такого числа нет в массиве! Нам оооочень жаль!");
         // Console.WriteLine(@"Такого числа {userInput} нет в массиве! Нам так жаль");
         printArray();
         // return;
