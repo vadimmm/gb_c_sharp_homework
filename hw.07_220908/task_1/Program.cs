@@ -36,7 +36,8 @@ for (int i = 0; i < numbers.GetLength(0); i++)
 }
 
 // вывод содержимого массива
-Console.WriteLine("\n\nСодержимое массива после заполнения случайными данными:");
+Console.Write("\n\nОТВЕТ. ");
+Console.WriteLine("Содержимое массива после заполнения случайными данными:");
 for (int i = 0; i < numbers.GetLength(0); i++)
 {
     for (int j = 0; j < numbers.GetLength(1); j++)
