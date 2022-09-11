@@ -14,14 +14,14 @@ Console.WriteLine("\n" + task_name + "\n");
 Console.WriteLine(separator);
 Console.WriteLine("");
 
-// string [] VolumeArray = new string[2];
-// Console.Write("Введите, через пробел, размер двумерного массива (строки и столбцы): ");
-// VolumeArray  = Console.ReadLine().Split(' ');
-// int row = int.Parse(VolumeArray[0]);
-// int col = int.Parse(VolumeArray[1]);
+string [] VolumeArray = new string[2];
+Console.Write("Введите, через пробел, размер двумерного массива (строки и столбцы): ");
+VolumeArray  = Console.ReadLine().Split(' ');
+int row = int.Parse(VolumeArray[0]);
+int col = int.Parse(VolumeArray[1]);
 
-int row = 2;
-int col = 5;
+// int row = 3;
+// int col = 5;
 
 int[,] numbers = new int[row, col];
 int[,] numbersTMP = new int[col, row];
@@ -37,10 +37,11 @@ for (int i = 0; i < numbers.GetLength(0); i++)
     }
 }
 
-void printArray(int[,] array)
+// B - [,]
+void printArrayB(int[,] array)
 {
-    // вывод содержимого массива
-    Console.WriteLine("\nСодержимое массива c данными:");
+    // вывод содержимого двумерного (матричного, табличного) массива
+    Console.WriteLine("\nСодержимое двумерного массива c данными:");
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
@@ -51,13 +52,9 @@ void printArray(int[,] array)
     }
 }
 
-printArray(numbers);
+printArrayB(numbers);
 
-
-// 
-double average = 0;
-int sum = 0;
-
+// Поворот масcива на 90 градусов вправо
 for (int i = 0; i < numbers.GetLength(0); i++)
 {
     int numb = 0;
@@ -66,19 +63,23 @@ for (int i = 0; i < numbers.GetLength(0); i++)
         numbersTMP[j,i] = numbers[i, j];
     }
 }
+// вывод массива повернутого на 90 градусов вправо 
+// printArrayB(numbersTMP);
 
-printArray(numbersTMP);
-
+int sum = 0;
+double average = 0;
+string result = "";
 for (int i = 0; i < numbersTMP.GetLength(0); i++)
 {
     int numb = 0;
     for (int j = 0; j < numbersTMP.GetLength(1); j++)
     {
-        Console.Write($"{i}:{j}\t");
         sum += numbersTMP[i, j];
         numb++;
     }
-    average = (double) sum / numb;
-    Console.WriteLine($"\nNUMB = {numb}; SUM = {sum}; AVERAGE = {Math.Round(average, 1)}\n");
+    average = Math.Round((double) sum / numb, 1);
+    result =  average.ToString() + "; " + result;
     sum = numb = 0;
-}
+} 
+
+Console.WriteLine($"\nОТВЕТ: Среднее арифметическое каждого столбца: {result}\n\n");
