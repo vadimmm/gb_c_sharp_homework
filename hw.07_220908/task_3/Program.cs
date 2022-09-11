@@ -24,7 +24,7 @@ int row = 2;
 int col = 5;
 
 int[,] numbers = new int[row, col];
-
+int[,] numbersTMP = new int[col, row];
 // заполнение массива случайными числами
 Random rnd = new Random();
 int rndNumbStart = 1;
@@ -37,21 +37,21 @@ for (int i = 0; i < numbers.GetLength(0); i++)
     }
 }
 
-void printArray()
+void printArray(int[,] array)
 {
     // вывод содержимого массива
     Console.WriteLine("\nСодержимое массива c данными:");
-    for (int i = 0; i < numbers.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < numbers.GetLength(1); j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write($"{numbers[i, j]}\t");
+            Console.Write($"{array[i, j]}\t");
         }
         Console.WriteLine();
     }
 }
 
-printArray();
+printArray(numbers);
 
 
 // 
@@ -63,11 +63,22 @@ for (int i = 0; i < numbers.GetLength(0); i++)
     int numb = 0;
     for (int j = 0; j < numbers.GetLength(1); j++)
     {
+        numbersTMP[j,i] = numbers[i, j];
+    }
+}
+
+printArray(numbersTMP);
+
+for (int i = 0; i < numbersTMP.GetLength(0); i++)
+{
+    int numb = 0;
+    for (int j = 0; j < numbersTMP.GetLength(1); j++)
+    {
         Console.Write($"{i}:{j}\t");
-        sum += numbers[i, j];
+        sum += numbersTMP[i, j];
         numb++;
     }
-    average = (double)sum / numb;
+    average = (double) sum / numb;
     Console.WriteLine($"\nNUMB = {numb}; SUM = {sum}; AVERAGE = {Math.Round(average, 1)}\n");
     sum = numb = 0;
 }
