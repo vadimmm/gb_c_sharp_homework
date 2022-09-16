@@ -24,6 +24,34 @@ int GetRandomNumber(int start, int stop)
     return number;
 }
 
+void WriteColorMessage(int type, string message)
+{
+    if (type == 0)
+    {
+        // Console.BackgroundColor = ConsoleColor.DarkRed;
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+    }
+    else if (type == 1)
+    {
+        Console.BackgroundColor = ConsoleColor.DarkGreen;
+    }
+    else if (type == 2)
+    {
+        Console.BackgroundColor = ConsoleColor.Blue;
+        Console.ForegroundColor = ConsoleColor.Black;
+    }
+    else if (type == 3)
+    {
+        Console.BackgroundColor = ConsoleColor.Blue;
+    }
+    else
+    {
+        Console.BackgroundColor = ConsoleColor.DarkYellow;
+    }
+    Console.WriteLine($" {message} ");
+    Console.ResetColor();
+}
+
 int FoundNumber(int[,] array, int numb)
 {
     int countRepeatNumb = 0;
@@ -54,28 +82,51 @@ void ArrayDisplay2D(int[,] array)
     }
 }
 
-int row = 4, col = 12;
+string[] arrayParam = new string[2];
+Console.Write("Введите, через пробел, размер используемых двумерных массивов (строки и столбцы): ");
+arrayParam = Console.ReadLine().Split(' ');
+int row = int.Parse(arrayParam[0]);
+int col = int.Parse(arrayParam[1]);
+Console.WriteLine("");
+// int row = 4, col = 12;
+
+string[] arrayRandomParam = new string[2];
+anchorRandomParam:
+Console.Write("Введите, целые числа через пробел, интервал для рандомизации чисел (начальное и конечное): ");
+arrayRandomParam = Console.ReadLine().Split(' ');
+int rndNumbStart = int.Parse(arrayRandomParam[0]);
+int rndNumbStop = int.Parse(arrayRandomParam[1]);
+Console.WriteLine($"Создан интервал для рандомизации целых чисел [{rndNumbStart}, {rndNumbStop}]");
+if ((rndNumbStop < rndNumbStart))
+{
+    WriteColorMessage(0, $"Числа для генерации не верны, начальное число {rndNumbStart} больше конечного числа {rndNumbStop}.");
+    goto anchorRandomParam;
+}
+else if ((row * col) >= (rndNumbStop + 1 - rndNumbStart))
+{
+    WriteColorMessage(0, $"Введённый интервал {rndNumbStop - rndNumbStart} слишком мал для генерации уникальных числел для массива размером {row * col}.");
+    goto anchorRandomParam;
+}
 
 int[,] numbers = new int[row, col];
 Console.WriteLine($"Создан двумерный массив [{row},{col}]");
-
 
 for (int i = 0; i < numbers.GetLength(0); i++)
 {
     for (int j = 0; j < numbers.GetLength(1); j++)
     {
-        int newNumb = GetRandomNumber(1, 51);
-        int numberRepeatCount = FoundNumber(numbers, newNumb);
+        int rndNumber = GetRandomNumber(rndNumbStart, rndNumbStop + 1);
+        int numberRepeatCount = FoundNumber(numbers, rndNumber);
         if (numberRepeatCount > 0)
         {
-            j -= 1;
+            j--;
         }
         else
         {
-            numbers[i, j] = newNumb;
+            numbers[i, j] = rndNumber;
         }
     }
 }
 
-Console.WriteLine("\n");
+Console.Write("\nОТВЕТ: ");
 ArrayDisplay2D(numbers);
