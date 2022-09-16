@@ -102,7 +102,7 @@ void ProductOfArrayNumbers2D(int[,] arrayOne, int[,] arrayTwo, int[,] arrayThree
             arrayThree[i, j] = 0;
             for (int h = 0; h < arrayThree.GetLength(1); h++)
             {
-                arrayThree[i, j] = matrixOne[i, h] * matrixTwo[h, j];
+                arrayThree[i, j] += matrixOne[i, h] * matrixTwo[h, j];
             }
         }
     }
