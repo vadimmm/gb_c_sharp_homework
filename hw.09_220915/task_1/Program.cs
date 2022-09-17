@@ -21,12 +21,11 @@ void WriteColorMessage(int type, string message)
 {
     if (type == 0)
     {
-        // Console.BackgroundColor = ConsoleColor.DarkRed;
         Console.ForegroundColor = ConsoleColor.DarkRed;
     }
     else if (type == 1)
     {
-        Console.BackgroundColor = ConsoleColor.DarkGreen;
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
     }
     else if (type == 2)
     {
@@ -41,7 +40,7 @@ void WriteColorMessage(int type, string message)
     {
         Console.BackgroundColor = ConsoleColor.DarkYellow;
     }
-    Console.WriteLine($" {message} ");
+    Console.Write($" {message} ");
     Console.ResetColor();
 }
 
@@ -61,7 +60,7 @@ void ArrayFilling2D(int[,] array, int rndNumbStart, int rndNumbStop)
 void ArrayDisplay2D(int[,] array)
 {
     // вывод содержимого двумерного (матричного, табличного) массива
-    Console.WriteLine($"Содержимое двумерного массива c данными:");
+    // Console.WriteLine($"Содержимое двумерного массива c данными:");
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
@@ -72,31 +71,27 @@ void ArrayDisplay2D(int[,] array)
     }
 }
 
-
-string[] paramArray = new string[2];
-Console.Write("Введите, через пробел, размер двумерного массива (строки и столбцы): ");
-paramArray = Console.ReadLine().Split(' ');
-int row = int.Parse(paramArray[0]);
-int col = int.Parse(paramArray[1]);
-
-int[,] numbers = new int[row, col];
-
-string[] arrayRandomParam = new string[2];
-anchorRandomParam:
-Console.Write("Введите, целые числа через пробел, интервал для рандомизации чисел (начальное и конечное): ");
-arrayRandomParam = Console.ReadLine().Split(' ');
-int rndNumbStart = int.Parse(arrayRandomParam[0]);
-int rndNumbStop = int.Parse(arrayRandomParam[1]);
-Console.WriteLine($"Создан интервал для рандомизации целых чисел [{rndNumbStart}, {rndNumbStop}]");
-if ((rndNumbStop < rndNumbStart))
+void ArrayDisplayColor2D(int[,] array)
 {
-    WriteColorMessage(0, $"Числа для генерации не верны, начальное число {rndNumbStart} больше конечного числа {rndNumbStop}.");
-    goto anchorRandomParam;
+    // вывод содержимого двумерного (матричного, табличного) массива
+    // Console.WriteLine($"Содержимое двумерного массива c данными:");
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] % 2 == 0)
+            {
+                WriteColorMessage(1, $"{array[i, j]}\t");
+            } 
+            else
+            {
+                WriteColorMessage(0, $"{array[i, j]}\t");
+            }
+            // Console.Write($"{array[i, j]}\t");
+        }
+        Console.WriteLine();
+    }
 }
-
-ArrayFilling2D(numbers, rndNumbStart, rndNumbStop);
-ArrayDisplay2D(numbers);
-
 
 void ArraySortLine(int[,] array)
 {
@@ -113,11 +108,52 @@ void ArraySortLine(int[,] array)
                     array[i, k - 1] = tmp;
                 }
             }
-            // Console.Write($"{array[i, j]}\t");
         }
         Console.WriteLine();
     }
 }
 
-ArraySortLine(numbers);
-ArrayDisplay2D(numbers);
+string[] paramArray = new string[2];
+Console.Write("Введите, через пробел, размер двумерного массива (строки и столбцы): ");
+paramArray = Console.ReadLine().Split(' ');
+int row = int.Parse(paramArray[0]);
+int col = int.Parse(paramArray[1]);
+
+int[,] numbers = new int[row, col];
+
+string[] arrayRandomParam = new string[2];
+anchorRandomParam:
+Console.Write("\nВведите, целые числа через пробел, интервал для рандомизации чисел (начальное и конечное): ");
+arrayRandomParam = Console.ReadLine().Split(' ');
+int rndNumbStart = int.Parse(arrayRandomParam[0]);
+int rndNumbStop = int.Parse(arrayRandomParam[1]);
+Console.WriteLine($"Создан интервал для рандомизации целых чисел [{rndNumbStart}, {rndNumbStop}]");
+if ((rndNumbStop < rndNumbStart))
+{
+    WriteColorMessage(0, $"Числа для генерации не верны, начальное число {rndNumbStart} больше конечного числа {rndNumbStop}.");
+    goto anchorRandomParam;
+}
+
+
+// ArrayFilling2D(numbers, rndNumbStart, rndNumbStop);
+// ArrayDisplay2D(numbers);
+
+// ArraySortLine(numbers);
+// ArrayDisplay2D(numbers);
+
+
+void RunTask(int[,] name)
+{
+    ArrayFilling2D(name, rndNumbStart, rndNumbStop);
+    // Console.WriteLine("\nСгенерированный массив:");
+    // ArrayDisplay2D(name);
+    Console.WriteLine("\nСгенерированный массив с пометкой чётных/нечётных чисел:");
+    ArrayDisplayColor2D(name);
+    ArraySortLine(name);
+    // Console.WriteLine("Отсортированный сгенерированный массив:");
+    // ArrayDisplay2D(name);
+    Console.WriteLine("Отсортированный сгенерированный массив с пометкой чётных/нечётных чисел:");
+    ArrayDisplayColor2D(name);
+}
+
+RunTask(numbers);
