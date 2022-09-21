@@ -40,5 +40,3 @@ void RunTask()
 }
 
 RunTask();
-
-// если  n > = 1    ОТВЕТ: Stack overflow.
