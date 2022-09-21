@@ -35,8 +35,10 @@ int FuncAckermann(int m, int n)
 
 void RunTask()
 {
-    Console.Write($"ОТВЕТ: ");
+    Console.Write($"\nОТВЕТ: ");
     Console.WriteLine(FuncAckermann(m, n));
 }
 
 RunTask();
+
+// если  n > = 1    ОТВЕТ: Stack overflow.
