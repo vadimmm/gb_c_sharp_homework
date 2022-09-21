@@ -13,8 +13,9 @@ Console.WriteLine("\n" + task_name + "\n");
 Console.WriteLine(separator);
 Console.WriteLine("");
 
-Console.Write("Введите размер стороны квадратного массива (целое положительное чило):");
+Console.Write("Введите размер стороны квадратного массива (целое положительное чило): ");
 int row = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine();
 
 void ArrayDisplay2D_D2(int[,] array)
 {
@@ -65,6 +66,7 @@ void ArraySpiralFilling2D(int[,] array)
 void RunTask(int[,] name)
 {
     ArraySpiralFilling2D(name);
+    Console.Write("\nОТВЕТ: ");
     ArrayDisplay2D_D2(name);
 }
 
